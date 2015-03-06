@@ -53,6 +53,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoanterior = new javax.swing.JButton();
         botaoproximo = new javax.swing.JButton();
         botaoultimo = new javax.swing.JButton();
+        listagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -191,6 +192,14 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        listagem.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        listagem.setText("Ir para a listagem");
+        listagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listagemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -202,38 +211,44 @@ public class CidadeJFrame extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigoCidade)
-                            .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jLabel1)))
+                .addGap(208, 208, 208)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCodigoCidade)
+                    .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(listagem)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCodigoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtCodigoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(listagem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -247,7 +262,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         } else {
             try {
-                obj.setCodigo(Integer.parseInt(txtCodigoCidade.getText()));
+                obj.setCodigocidade(Integer.parseInt(txtCodigoCidade.getText()));
                 deu = true;
             } catch (Exception ex) {
                 deu = false;
@@ -255,7 +270,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
             }
         }
         if (deu == true) {
-            obj.setNome(txtNomeCidade.getText());
+            obj.setNomecidade(txtNomeCidade.getText());
             lista.add(obj);
             Limpar();
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
@@ -279,11 +294,11 @@ public class CidadeJFrame extends javax.swing.JFrame {
         boolean encontrou = false;
         Integer posicaoachou = 0;
         for (Cidade pessoa : lista) {
-            if (nome.equals(pessoa.getNome())) {
+            if (nome.equals(pessoa.getNomecidade())) {
                 encontrou = true;
                 posicao = posicaoachou;
-                txtCodigoCidade.setText(pessoa.getCodigo().toString());
-                txtNomeCidade.setText(pessoa.getNome());
+                txtCodigoCidade.setText(pessoa.getCodigocidade().toString());
+                txtNomeCidade.setText(pessoa.getNomecidade());
                 break;
             }
             posicaoachou++;
@@ -303,8 +318,8 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoultimo.setEnabled(true);
         posicao = 0;
         Cidade elemento = lista.get(0);
-        txtCodigoCidade.setText(elemento.getCodigo().toString());
-        txtNomeCidade.setText(elemento.getNome());
+        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
+        txtNomeCidade.setText(elemento.getNomecidade());
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
@@ -317,8 +332,8 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoultimo.setEnabled(true);
         posicao = posicao - 1;
         Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigo().toString());
-        txtNomeCidade.setText(elemento.getNome());
+        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
+        txtNomeCidade.setText(elemento.getNomecidade());
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
@@ -331,8 +346,8 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoultimo.setEnabled(true);
         posicao = posicao + 1;
         Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigo().toString());
-        txtNomeCidade.setText(elemento.getNome());
+        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
+        txtNomeCidade.setText(elemento.getNomecidade());
         if (lista.size() - 1 == posicao) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
@@ -346,14 +361,20 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoultimo.setEnabled(false);
         posicao = lista.size() - 1;
         Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigo().toString());
-        txtNomeCidade.setText(elemento.getNome());
+        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
+        txtNomeCidade.setText(elemento.getNomecidade());
         if (lista.size() - 1 == posicao && lista.size() == 1) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
             botaoanterior.setEnabled(false);
         }
     }//GEN-LAST:event_botaoultimoActionPerformed
+
+    private void listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagemActionPerformed
+        cidadeListar lista = new cidadeListar();
+        lista.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_listagemActionPerformed
 
     public void Limpar() {
         txtCodigoCidade.setText(null);
@@ -409,6 +430,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton listagem;
     private javax.swing.JTextField txtCodigoCidade;
     private javax.swing.JTextField txtNomeCidade;
     // End of variables declaration//GEN-END:variables

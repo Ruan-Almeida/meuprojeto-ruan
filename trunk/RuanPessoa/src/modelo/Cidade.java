@@ -2,23 +2,23 @@ package modelo;
 
 public class Cidade {
 
-    private String nome;
-    private Integer codigo;
+    private String nomecidade;
+    private Integer codigocidade;
 
-    public String getNome() {
-        return nome;
+    public String getNomecidade() {
+        return nomecidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecidade(String nomecidade) {
+        this.nomecidade = nomecidade;
     }
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCodigocidade() {
+        return codigocidade;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCodigocidade(Integer codigocidade) {
+        this.codigocidade = codigocidade;
     }
 
 }
