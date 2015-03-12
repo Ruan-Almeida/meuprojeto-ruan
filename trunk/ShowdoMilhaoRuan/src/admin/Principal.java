@@ -61,6 +61,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar4.add(jMenu7);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Principal");
 
         jMenu1.setText("Jogador");
 

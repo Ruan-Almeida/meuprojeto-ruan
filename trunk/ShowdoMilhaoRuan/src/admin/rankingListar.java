@@ -5,8 +5,14 @@
  */
 package admin;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ranking;
 
@@ -15,26 +21,30 @@ public class rankingListar extends javax.swing.JFrame {
     /**
      * Creates new form rankingListar
      */
-    public rankingListar() {
+    public rankingListar() throws ParseException {
         initComponents();
         List<Ranking> lista = new ArrayList<Ranking>();
         
+        String datahora = "12/03/2015 01:10 PM";
+        DateFormat formatado = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+        Date data = formatado.parse(datahora);
+       
         Ranking ran = new Ranking();
-        ran.setLogin("Ruan");
+        ran.getJogador().setLogin("Ruan");
         ran.setPontos(10);
-        ran.setData(11.03.15);
+        ran.setData(data);
         lista.add(ran);
 
         ran = new Ranking();
-        ran.setLogin("Paulo");
+        ran.getJogador().setLogin("Paulo");
         ran.setPontos(20);
-        ran.setData(11.03.15);
+        ran.setData(data);
         lista.add(ran);
         
         ran = new Ranking();
-        ran.setLogin("Maria");
+        ran.getJogador().setLogin("Maria");
         ran.setPontos(25);
-        ran.setData(11.03.15);
+        ran.setData(data);
         lista.add(ran);
 
         DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
@@ -42,7 +52,7 @@ public class rankingListar extends javax.swing.JFrame {
         Object[] linha = new Object[modelo.getColumnCount()];
 
         for (Ranking ranking : lista) {
-            linha[0] = ranking.getLogin();
+            linha[0] = ranking.getJogador().getLogin();
             linha[1] = ranking.getPontos();
             linha[2] = ranking.getData();
             modelo.addRow(linha);
@@ -63,9 +73,11 @@ public class rankingListar extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        listagem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        listagem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14))); // NOI18N
 
+        tabela.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -120,7 +132,7 @@ public class rankingListar extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(listagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7))
         );
@@ -158,7 +170,11 @@ public class rankingListar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new rankingListar().setVisible(true);
+                try {
+                    new rankingListar().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(rankingListar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

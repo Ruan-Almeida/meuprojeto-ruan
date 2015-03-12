@@ -38,6 +38,8 @@ public class jogadorManter extends javax.swing.JFrame {
         botaoconsultar = new javax.swing.JButton();
         listagem = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,14 +190,21 @@ public class jogadorManter extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel1.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(73, 73, 73)
@@ -212,12 +221,10 @@ public class jogadorManter extends javax.swing.JFrame {
                                     .addComponent(txtEmail))
                                 .addGap(38, 38, 38)
                                 .addComponent(listagem))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +236,9 @@ public class jogadorManter extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -261,6 +270,7 @@ public class jogadorManter extends javax.swing.JFrame {
         txtLogin.setText(elemento.getLogin());
         txtSenha.setText(elemento.getSenha());
         txtEmail.setText(elemento.getEmail());
+        txtId.setText(elemento.getId().toString());
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
@@ -276,6 +286,7 @@ public class jogadorManter extends javax.swing.JFrame {
         txtLogin.setText(elemento.getLogin());
         txtSenha.setText(elemento.getSenha());
         txtEmail.setText(elemento.getEmail());
+        txtId.setText(elemento.getId().toString());
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
@@ -291,6 +302,7 @@ public class jogadorManter extends javax.swing.JFrame {
         txtLogin.setText(elemento.getLogin());
         txtSenha.setText(elemento.getSenha());
         txtEmail.setText(elemento.getEmail());
+        txtId.setText(elemento.getId().toString());
         if (lista.size() - 1 == posicao) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
@@ -307,6 +319,7 @@ public class jogadorManter extends javax.swing.JFrame {
         txtLogin.setText(elemento.getLogin());
         txtSenha.setText(elemento.getSenha());
         txtEmail.setText(elemento.getEmail());
+        txtId.setText(elemento.getId().toString());
         if (lista.size() - 1 == posicao && lista.size() == 1) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
@@ -322,6 +335,7 @@ public class jogadorManter extends javax.swing.JFrame {
             obj.setLogin(txtLogin.getText());
             obj.setSenha(txtSenha.getText());
             obj.setEmail(txtEmail.getText());
+            obj.setId(Integer.parseInt(txtId.getText()));
             lista.add(obj);
             Limpar();
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
@@ -351,6 +365,7 @@ public class jogadorManter extends javax.swing.JFrame {
                 txtLogin.setText(jogador.getLogin());
                 txtSenha.setText(jogador.getSenha());
                 txtEmail.setText(jogador.getEmail());
+                txtId.setText(jogador.getId().toString());
                 posicao = posicaoachou;
                 break;
             }
@@ -374,6 +389,7 @@ public class jogadorManter extends javax.swing.JFrame {
         txtLogin.setText("");
         txtSenha.setText("");
         txtEmail.setText("");
+        txtId.setText(null);
     }
     
     /**
@@ -420,6 +436,7 @@ public class jogadorManter extends javax.swing.JFrame {
     private javax.swing.JButton botaoprimeiro;
     private javax.swing.JButton botaoproximo;
     private javax.swing.JButton botaoultimo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -428,6 +445,7 @@ public class jogadorManter extends javax.swing.JFrame {
     private javax.swing.JButton listagem;
     private javax.swing.JLabel pessoa;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
