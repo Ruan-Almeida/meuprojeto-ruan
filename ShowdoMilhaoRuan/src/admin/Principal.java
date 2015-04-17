@@ -5,6 +5,10 @@
  */
 package admin;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -32,6 +36,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
+        lblShow = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuJogadorL = new javax.swing.JMenuItem();
@@ -62,6 +67,13 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
+
+        lblShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/show-do-milhao.jpg"))); // NOI18N
+        lblShow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMouseClicked(evt);
+            }
+        });
 
         jMenu1.setText("Jogador");
 
@@ -121,11 +133,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(lblShow)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addComponent(lblShow)
+                .addGap(56, 56, 56))
         );
 
         pack();
@@ -134,7 +152,7 @@ public class Principal extends javax.swing.JFrame {
     private void mnuJogadorLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuJogadorLActionPerformed
         jogadorListar tela = new jogadorListar();
         tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        tela.setVisible(true);        
+        tela.setVisible(true);
     }//GEN-LAST:event_mnuJogadorLActionPerformed
 
     private void mnuJogadorGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuJogadorGActionPerformed
@@ -152,14 +170,23 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         perguntaListar tela = new perguntaListar();
         tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        tela.setVisible(true);  
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        rankingListar tela = new rankingListar();
-        tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        tela.setVisible(true);
+        try {
+            rankingListar tela = new rankingListar();
+            tela.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            tela.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void lblShowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMouseClicked
+        lblShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/show4.jpg")));
+    }//GEN-LAST:event_lblShowMouseClicked
 
     /**
      * @param args the command line arguments
@@ -211,6 +238,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JLabel lblShow;
     private javax.swing.JMenuItem mnuJogadorG;
     private javax.swing.JMenuItem mnuJogadorL;
     private javax.swing.JMenuItem mnuPerguntaG;

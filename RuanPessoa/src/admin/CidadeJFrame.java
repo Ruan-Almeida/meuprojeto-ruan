@@ -5,11 +5,10 @@
  */
 package admin;
 
+import dao.CidadeDAO;
 import javax.swing.JOptionPane;
 import modelo.Cidade;
 import java.util.List;
-import java.util.ArrayList;
-import modelo.Pessoa;
 
 /**
  *
@@ -25,7 +24,8 @@ public class CidadeJFrame extends javax.swing.JFrame {
      */
     public CidadeJFrame() {
         initComponents();
-        lista = new ArrayList<Cidade>();
+        CidadeDAO dao = new CidadeDAO();
+        lista = dao.listar();
         posicao = 0;
     }
 
@@ -56,6 +56,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
         listagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cidade");
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setText("Cidade");
@@ -67,6 +68,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
         jLabel3.setText("Código:");
 
         txtCodigoCidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtCodigoCidade.setEnabled(false);
 
         txtNomeCidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
 
@@ -74,6 +76,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoinserir.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoinserir.setText("Inserir");
+        botaoinserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoinserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoinserirActionPerformed(evt);
@@ -82,6 +85,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaolimpar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaolimpar.setText("Limpar");
+        botaolimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaolimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaolimparActionPerformed(evt);
@@ -90,6 +94,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoexluir.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoexluir.setText("Exluir");
+        botaoexluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoexluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoexluirActionPerformed(evt);
@@ -98,6 +103,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoconsultar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoconsultar.setText("Consultar");
+        botaoconsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoconsultarActionPerformed(evt);
@@ -135,6 +141,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoprimeiro.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoprimeiro.setText("Primeiro");
+        botaoprimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoprimeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoprimeiroActionPerformed(evt);
@@ -143,6 +150,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoanterior.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoanterior.setText("Anterior");
+        botaoanterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoanterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoanteriorActionPerformed(evt);
@@ -151,6 +159,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoproximo.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoproximo.setText("Próximo");
+        botaoproximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoproximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoproximoActionPerformed(evt);
@@ -159,6 +168,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
         botaoultimo.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoultimo.setText("Último");
+        botaoultimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoultimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoultimoActionPerformed(evt);
@@ -211,10 +221,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
@@ -223,6 +229,10 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCodigoCidade)
                     .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(listagem)
                 .addGap(24, 24, 24))
@@ -230,25 +240,25 @@ public class CidadeJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtCodigoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(27, 27, 27)
                         .addComponent(listagem)))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCodigoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -258,20 +268,17 @@ public class CidadeJFrame extends javax.swing.JFrame {
     private void botaoinserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoinserirActionPerformed
         Cidade obj = new Cidade();
         Boolean deu = false;
-        if (txtNomeCidade.getText().isEmpty() || txtCodigoCidade.getText().isEmpty()) {
+        if (txtNomeCidade.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
+            deu = false;
         } else {
-            try {
-                obj.setCodigocidade(Integer.parseInt(txtCodigoCidade.getText()));
-                deu = true;
-            } catch (Exception ex) {
-                deu = false;
-                JOptionPane.showMessageDialog(null, "O código só pode ser preenchido com números.");
-            }
+            deu = true;
         }
         if (deu == true) {
-            obj.setNomecidade(txtNomeCidade.getText());
-            lista.add(obj);
+            obj.setNome(txtNomeCidade.getText());
+            CidadeDAO dao = new CidadeDAO();
+            dao.inserir(obj);
+            lista = dao.listar();
             Limpar();
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
         }
@@ -283,22 +290,35 @@ public class CidadeJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_botaolimparActionPerformed
 
     private void botaoexluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexluirActionPerformed
-        if (lista.size() >= 0) {
-            lista.remove(lista.get(posicao));
-            Limpar();
+        if (txtCodigoCidade.getText().isEmpty() == false) {
+            if (lista.size() >= 0) {
+                CidadeDAO dao = new CidadeDAO();
+                Boolean deucerto = dao.excluir(lista.get(posicao));
+                if (deucerto == true) {
+                    Limpar();
+                    posicao = 0;
+                    lista = dao.listar();
+                    JOptionPane.showMessageDialog(null, "Excluído!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         }
     }//GEN-LAST:event_botaoexluirActionPerformed
 
     private void botaoconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconsultarActionPerformed
-        String nome = JOptionPane.showInputDialog("Digite o nome da cidade a ser pesquisado: ");
+
+        Integer codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código a ser pesquisado: "));
         boolean encontrou = false;
         Integer posicaoachou = 0;
-        for (Cidade pessoa : lista) {
-            if (nome.equals(pessoa.getNomecidade())) {
+        for (Cidade cidade : lista) {
+            if (codigo == (cidade.getCodigo())) {
                 encontrou = true;
                 posicao = posicaoachou;
-                txtCodigoCidade.setText(pessoa.getCodigocidade().toString());
-                txtNomeCidade.setText(pessoa.getNomecidade());
+                txtCodigoCidade.setText(cidade.getCodigo().toString());
+                txtNomeCidade.setText(cidade.getNome());
                 break;
             }
             posicaoachou++;
@@ -316,10 +336,12 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(false);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = 0;
-        Cidade elemento = lista.get(0);
-        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
-        txtNomeCidade.setText(elemento.getNomecidade());
+        if (lista.size() > 0) {
+            posicao = 0;
+            Cidade elemento = lista.get(0);
+            txtCodigoCidade.setText(elemento.getCodigo().toString());
+            txtNomeCidade.setText(elemento.getNome());
+        }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
@@ -330,12 +352,18 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = posicao - 1;
-        Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
-        txtNomeCidade.setText(elemento.getNomecidade());
+        if (lista.size() > 0) {
+            posicao = posicao - 1;
+            Cidade elemento = lista.get(posicao);
+            txtCodigoCidade.setText(elemento.getCodigo().toString());
+            txtNomeCidade.setText(elemento.getNome());
+        }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
+        }
+
+        if (posicao == 0) {
+            botaoanterior.setEnabled(false);
         }
     }//GEN-LAST:event_botaoanteriorActionPerformed
 
@@ -344,10 +372,12 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = posicao + 1;
-        Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
-        txtNomeCidade.setText(elemento.getNomecidade());
+        if (posicao < lista.size() - 1) {
+            posicao = posicao + 1;
+            Cidade elemento = lista.get(posicao);
+            txtCodigoCidade.setText(elemento.getCodigo().toString());
+            txtNomeCidade.setText(elemento.getNome());
+        }
         if (lista.size() - 1 == posicao) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
@@ -359,10 +389,12 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(false);
         botaoultimo.setEnabled(false);
-        posicao = lista.size() - 1;
-        Cidade elemento = lista.get(posicao);
-        txtCodigoCidade.setText(elemento.getCodigocidade().toString());
-        txtNomeCidade.setText(elemento.getNomecidade());
+        if (lista.size() > 0) {
+            posicao = lista.size() - 1;
+            Cidade elemento = lista.get(posicao);
+            txtCodigoCidade.setText(elemento.getCodigo().toString());
+            txtNomeCidade.setText(elemento.getNome());
+        }
         if (lista.size() - 1 == posicao && lista.size() == 1) {
             botaoproximo.setEnabled(false);
             botaoultimo.setEnabled(false);
@@ -371,7 +403,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoultimoActionPerformed
 
     private void listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagemActionPerformed
-        cidadeListar lista = new cidadeListar();
+        CidadeListar lista = new CidadeListar();
         lista.setVisible(true);
         dispose();
     }//GEN-LAST:event_listagemActionPerformed

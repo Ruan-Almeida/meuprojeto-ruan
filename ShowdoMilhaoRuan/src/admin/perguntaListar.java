@@ -5,7 +5,7 @@
  */
 package admin;
 
-import java.util.ArrayList;
+import dao.PerguntaDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pergunta;
@@ -17,8 +17,10 @@ public class perguntaListar extends javax.swing.JFrame {
      */
     public perguntaListar() {
         initComponents();
-        List<Pergunta> lista = new ArrayList<Pergunta>();
+        PerguntaDAO dao = new PerguntaDAO();
+        List<Pergunta> lista = dao.listar();
 
+        /*
         Pergunta p = new Pergunta();
         p.setEnunciado("Quanto é 2x2?");
         p.setA("4");
@@ -38,6 +40,7 @@ public class perguntaListar extends javax.swing.JFrame {
         p.setCerta("A");
         p.setNivel(2);
         lista.add(p);
+        */
 
         DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
         

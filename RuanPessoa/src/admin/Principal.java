@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package admin;
 
 /**
  *
- * @author Aluno
+ * @author Lais Acosta
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -28,94 +27,55 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuBar4 = new javax.swing.JMenuBar();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnuPessoaL = new javax.swing.JMenuItem();
-        mnuPessoaG = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        mnuCidadeL = new javax.swing.JMenuItem();
-        mnuCidadeG = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu2.setText("File");
-        jMenuBar2.add(jMenu2);
-
-        jMenu3.setText("Edit");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("File");
-        jMenuBar3.add(jMenu4);
-
-        jMenu5.setText("Edit");
-        jMenuBar3.add(jMenu5);
-
-        jMenu6.setText("File");
-        jMenuBar4.add(jMenu6);
-
-        jMenu7.setText("Edit");
-        jMenuBar4.add(jMenu7);
+        CadastroCidade = new javax.swing.JMenuItem();
+        ListarCidade = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        CadastroPessoa = new javax.swing.JMenuItem();
+        ListarPessoas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Pessoa");
-        jMenu1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jMenu1.setText("Cidade");
 
-        mnuPessoaL.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        mnuPessoaL.setText("Listar");
-        mnuPessoaL.addActionListener(new java.awt.event.ActionListener() {
+        CadastroCidade.setText("Cadastro");
+        CadastroCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuPessoaLActionPerformed(evt);
+                CadastroCidadeActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuPessoaL);
+        jMenu1.add(CadastroCidade);
 
-        mnuPessoaG.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        mnuPessoaG.setText("Gerenciar");
-        mnuPessoaG.addActionListener(new java.awt.event.ActionListener() {
+        ListarCidade.setText("Lista");
+        ListarCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuPessoaGActionPerformed(evt);
+                ListarCidadeActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuPessoaG);
+        jMenu1.add(ListarCidade);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu8.setText("Cidade");
-        jMenu8.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jMenu2.setText("Pessoa");
 
-        mnuCidadeL.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        mnuCidadeL.setText("Listar");
-        mnuCidadeL.addActionListener(new java.awt.event.ActionListener() {
+        CadastroPessoa.setText("Cadastro");
+        CadastroPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuCidadeLActionPerformed(evt);
+                CadastroPessoaActionPerformed(evt);
             }
         });
-        jMenu8.add(mnuCidadeL);
+        jMenu2.add(CadastroPessoa);
 
-        mnuCidadeG.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        mnuCidadeG.setText("Gerenciar");
-        mnuCidadeG.addActionListener(new java.awt.event.ActionListener() {
+        ListarPessoas.setText("Lista");
+        ListarPessoas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuCidadeGActionPerformed(evt);
+                ListarPessoasActionPerformed(evt);
             }
         });
-        jMenu8.add(mnuCidadeG);
+        jMenu2.add(ListarPessoas);
 
-        jMenuBar1.add(jMenu8);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -133,30 +93,29 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuPessoaLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPessoaLActionPerformed
-        pessoaListar telalistarp = new pessoaListar();
-        //Configuração para fechar apenas a tela atual quando clicar no botão de fechar
-        telalistarp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        telalistarp.setVisible(true);
-    }//GEN-LAST:event_mnuPessoaLActionPerformed
+    private void ListarPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarPessoasActionPerformed
+        PessoaListar p = new PessoaListar();
+        p.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        p.setVisible(true);
+    }//GEN-LAST:event_ListarPessoasActionPerformed
 
-    private void mnuPessoaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPessoaGActionPerformed
-        PessoaJFrame telap = new PessoaJFrame();
-        telap.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        telap.setVisible(true);
-    }//GEN-LAST:event_mnuPessoaGActionPerformed
+    private void CadastroPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroPessoaActionPerformed
+        PessoaJFrame p = new PessoaJFrame();
+        p.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        p.setVisible(true);
+    }//GEN-LAST:event_CadastroPessoaActionPerformed
 
-    private void mnuCidadeLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCidadeLActionPerformed
-        cidadeListar telalistar = new cidadeListar();
-        telalistar.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        telalistar.setVisible(true);
-    }//GEN-LAST:event_mnuCidadeLActionPerformed
+    private void CadastroCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroCidadeActionPerformed
+        CidadeJFrame c = new CidadeJFrame();
+        c.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        c.setVisible(true);
+    }//GEN-LAST:event_CadastroCidadeActionPerformed
 
-    private void mnuCidadeGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCidadeGActionPerformed
-        CidadeJFrame telac = new CidadeJFrame();
-        telac.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        telac.setVisible(true);
-    }//GEN-LAST:event_mnuCidadeGActionPerformed
+    private void ListarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarCidadeActionPerformed
+        CidadeListar c = new CidadeListar();
+        c.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        c.setVisible(true);
+    }//GEN-LAST:event_ListarCidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,23 +153,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem CadastroCidade;
+    private javax.swing.JMenuItem CadastroPessoa;
+    private javax.swing.JMenuItem ListarCidade;
+    private javax.swing.JMenuItem ListarPessoas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JMenuBar jMenuBar4;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem mnuCidadeG;
-    private javax.swing.JMenuItem mnuCidadeL;
-    private javax.swing.JMenuItem mnuPessoaG;
-    private javax.swing.JMenuItem mnuPessoaL;
     // End of variables declaration//GEN-END:variables
 }

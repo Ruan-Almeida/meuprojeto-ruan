@@ -5,7 +5,7 @@
  */
 package admin;
 
-import java.util.ArrayList;
+import dao.CidadeDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cidade;
@@ -14,45 +14,30 @@ import modelo.Cidade;
  *
  * @author Lais Acosta
  */
-public class cidadeListar extends javax.swing.JFrame {
-
+public class CidadeListar extends javax.swing.JFrame {
+    List<Cidade> lista;
+    
     /**
-     * Creates new form cidadeListar
+     * Creates new form CidadeListar
      */
-    public cidadeListar() {
+    public CidadeListar() {
         initComponents();
-        List<Cidade> lista = new ArrayList<Cidade>();
         
-        Cidade cidade = new Cidade();
-        cidade.setCodigocidade(01);
-        cidade.setNomecidade("Bagé");
-        
-        lista.add(cidade);
-       
-        cidade = new Cidade();
-        cidade.setCodigocidade(02);
-        cidade.setNomecidade("Dom Pedrito");
-        
-        lista.add(cidade);
-        
-        cidade = new Cidade();
-        cidade.setCodigocidade(03);
-        cidade.setNomecidade("Porto Alegre");
-        
-        lista.add(cidade);
+        CidadeDAO dao = new CidadeDAO();
+        List<Cidade> lista = dao.listar();
         
         DefaultTableModel modelo = (DefaultTableModel)tabelacidade.getModel();
         
         Object[] linha = new Object[modelo.getColumnCount()];
         
-        for (Cidade c : lista) {
-            linha[0] = c.getCodigocidade();
-            linha[1] = c.getNomecidade();
+        for (Cidade cid : lista) {
+            linha[0] = cid.getCodigo();
+            linha[1] = cid.getNome();
             
             modelo.addRow(linha);
-        }
-    }
 
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,14 +54,15 @@ public class cidadeListar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listagem"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 11))); // NOI18N
 
+        tabelacidade.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         tabelacidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome"
+                " Código", "Nome"
             }
         ) {
             Class[] types = new Class [] {
@@ -113,6 +99,7 @@ public class cidadeListar extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        gerenciarcidades.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         gerenciarcidades.setText("Gerenciar Cidades");
         gerenciarcidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +114,7 @@ public class cidadeListar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gerenciarcidades)
@@ -140,7 +127,7 @@ public class cidadeListar extends javax.swing.JFrame {
                 .addComponent(gerenciarcidades)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,20 +156,20 @@ public class cidadeListar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CidadeListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cidadeListar().setVisible(true);
+                new CidadeListar().setVisible(true);
             }
         });
     }

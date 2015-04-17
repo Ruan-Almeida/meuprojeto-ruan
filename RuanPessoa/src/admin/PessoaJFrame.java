@@ -5,8 +5,8 @@
  */
 package admin;
 
+import dao.PessoaDAO;
 import java.util.List;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Pessoa;
 
@@ -24,7 +24,8 @@ public class PessoaJFrame extends javax.swing.JFrame {
      */
     public PessoaJFrame() {
         initComponents();
-        lista = new ArrayList<Pessoa>();
+        PessoaDAO dao = new PessoaDAO();
+        lista = dao.listar();
         posicao = 0;
     }
 
@@ -57,6 +58,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
         listagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pessoa");
 
         pessoa.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         pessoa.setText("Pessoa");
@@ -70,7 +72,9 @@ public class PessoaJFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel4.setText("Sexo:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtCodigo.setEnabled(false);
 
         txtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
 
@@ -78,6 +82,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoinserir.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoinserir.setText("Inserir");
+        botaoinserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoinserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoinserirActionPerformed(evt);
@@ -86,6 +91,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaolimpar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaolimpar.setText("Limpar");
+        botaolimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaolimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaolimparActionPerformed(evt);
@@ -94,6 +100,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoexluir.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoexluir.setText("Exluir");
+        botaoexluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoexluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoexluirActionPerformed(evt);
@@ -102,6 +109,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoconsultar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoconsultar.setText("Consultar");
+        botaoconsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoconsultarActionPerformed(evt);
@@ -139,7 +147,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoprimeiro.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoprimeiro.setText("Primeiro");
-        botaoprimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botaoprimeiro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoprimeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoprimeiroActionPerformed(evt);
@@ -148,6 +156,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoanterior.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoanterior.setText("Anterior");
+        botaoanterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoanterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoanteriorActionPerformed(evt);
@@ -156,6 +165,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoproximo.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoproximo.setText("Próximo");
+        botaoproximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoproximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoproximoActionPerformed(evt);
@@ -164,6 +174,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         botaoultimo.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         botaoultimo.setText("Último");
+        botaoultimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoultimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoultimoActionPerformed(evt);
@@ -179,7 +190,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
                 .addComponent(botaoprimeiro)
                 .addGap(18, 18, 18)
                 .addComponent(botaoanterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botaoproximo)
                 .addGap(18, 18, 18)
                 .addComponent(botaoultimo)
@@ -199,6 +210,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         cbxSexo.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
+        cbxSexo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxSexoActionPerformed(evt);
@@ -223,9 +235,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
                         .addGap(164, 164, 164)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(pessoa))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
@@ -234,41 +243,41 @@ public class PessoaJFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                                     .addComponent(txtNome)
-                                    .addComponent(cbxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(38, 38, 38)
+                                    .addComponent(cbxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(pessoa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(listagem))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(pessoa)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(listagem)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pessoa)
+                    .addComponent(listagem))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -281,14 +290,16 @@ public class PessoaJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(false);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = 0;
-        Pessoa elemento = lista.get(0);
-        txtCodigo.setText(elemento.getCodigo().toString());
-        txtNome.setText(elemento.getNome());
-        if (elemento.getSexo().equals("Masculino")) {
-            cbxSexo.setSelectedIndex(1);
-        } else if (elemento.getSexo().equals("Feminino")) {
-            cbxSexo.setSelectedIndex(2);
+        if (lista.size() > 0) {
+            posicao = 0;
+            Pessoa elemento = lista.get(0);
+            txtCodigo.setText(elemento.getCodigo().toString());
+            txtNome.setText(elemento.getNome());
+            if (elemento.getSexo().equals("Masculino")) {
+                cbxSexo.setSelectedIndex(1);
+            } else if (elemento.getSexo().equals("Feminino")) {
+                cbxSexo.setSelectedIndex(2);
+            }
         }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
@@ -300,14 +311,16 @@ public class PessoaJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(false);
         botaoultimo.setEnabled(false);
-        posicao = lista.size() - 1;
-        Pessoa elemento = lista.get(posicao);
-        txtCodigo.setText(elemento.getCodigo().toString());
-        txtNome.setText(elemento.getNome());
-        if (elemento.getSexo().equals("Masculino")) {
-            cbxSexo.setSelectedIndex(1);
-        } else if (elemento.getSexo().equals("Feminino")) {
-            cbxSexo.setSelectedIndex(2);
+        if (lista.size() > 0) {
+            posicao = lista.size() - 1;
+            Pessoa elemento = lista.get(posicao);
+            txtCodigo.setText(elemento.getCodigo().toString());
+            txtNome.setText(elemento.getNome());
+            if (elemento.getSexo().equals("Masculino")) {
+                cbxSexo.setSelectedIndex(1);
+            } else if (elemento.getSexo().equals("Feminino")) {
+                cbxSexo.setSelectedIndex(2);
+            }
         }
         if (lista.size() - 1 == posicao && lista.size() == 1) {
             botaoproximo.setEnabled(false);
@@ -321,17 +334,23 @@ public class PessoaJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = posicao - 1;
-        Pessoa elemento = lista.get(posicao);
-        txtCodigo.setText(elemento.getCodigo().toString());
-        txtNome.setText(elemento.getNome());
-        if (elemento.getSexo().equals("Masculino")) {
-            cbxSexo.setSelectedIndex(1);
-        } else if (elemento.getSexo().equals("Feminino")) {
-            cbxSexo.setSelectedIndex(2);
+        if (lista.size() > 0) {
+            posicao = posicao - 1;
+            Pessoa elemento = lista.get(posicao);
+            txtCodigo.setText(elemento.getCodigo().toString());
+            txtNome.setText(elemento.getNome());
+            if (elemento.getSexo().equals("Masculino")) {
+                cbxSexo.setSelectedIndex(1);
+            } else if (elemento.getSexo().equals("Feminino")) {
+                cbxSexo.setSelectedIndex(2);
+            }
         }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
+        }
+
+        if (posicao == 0) {
+            botaoanterior.setEnabled(false);
         }
     }//GEN-LAST:event_botaoanteriorActionPerformed
 
@@ -340,14 +359,16 @@ public class PessoaJFrame extends javax.swing.JFrame {
         botaoanterior.setEnabled(true);
         botaoproximo.setEnabled(true);
         botaoultimo.setEnabled(true);
-        posicao = posicao + 1;
-        Pessoa elemento = lista.get(posicao);
-        txtCodigo.setText(elemento.getCodigo().toString());
-        txtNome.setText(elemento.getNome());
-        if (elemento.getSexo().equals("Masculino")) {
-            cbxSexo.setSelectedIndex(1);
-        } else if (elemento.getSexo().equals("Feminino")) {
-            cbxSexo.setSelectedIndex(2);
+        if (posicao < lista.size() - 1) {
+            posicao = posicao + 1;
+            Pessoa elemento = lista.get(posicao);
+            txtCodigo.setText(elemento.getCodigo().toString());
+            txtNome.setText(elemento.getNome());
+            if (elemento.getSexo().equals("Masculino")) {
+                cbxSexo.setSelectedIndex(1);
+            } else if (elemento.getSexo().equals("Feminino")) {
+                cbxSexo.setSelectedIndex(2);
+            }
         }
         if (lista.size() - 1 == posicao) {
             botaoproximo.setEnabled(false);
@@ -358,28 +379,24 @@ public class PessoaJFrame extends javax.swing.JFrame {
     private void botaoinserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoinserirActionPerformed
         Pessoa obj = new Pessoa();
         Boolean deu = false;
-        //Index é por posição e Item é pelo texto
-        if (txtNome.getText().isEmpty() || txtCodigo.getText().isEmpty() || cbxSexo.getSelectedIndex() == 0) {
+        if (txtNome.getText().isEmpty() || cbxSexo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
+            deu = false;
         } else {
-                try {
-                    obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
-                    deu = true;
-                } catch (Exception ex) {
-                    deu = false;
-                    JOptionPane.showMessageDialog(null, "O código só pode ser preenchido com números.");
-                }
-            }
+            deu = true;
+        }
 
         if (deu == true) {
             obj.setNome(txtNome.getText());
-            if (cbxSexo.getSelectedItem().toString().equals("Masculino")) {
+            if (cbxSexo.getSelectedItem().equals("Masculino")) {
                 obj.setSexo("Masculino");
             } else {
                 obj.setSexo("Feminino");
             }
 
-            lista.add(obj);
+            PessoaDAO dao = new PessoaDAO();
+            dao.inserir(obj);
+            lista = dao.listar();
             Limpar();
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
         }
@@ -391,19 +408,30 @@ public class PessoaJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_botaolimparActionPerformed
 
     private void botaoexluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexluirActionPerformed
-        if (lista.size() >= 0) {
-            lista.remove(lista.get(posicao));
-            Limpar();
+        if (txtCodigo.getText().isEmpty() == false) {
+            if (lista.size() >= 0) {
+                PessoaDAO dao = new PessoaDAO();
+                Boolean deucerto = dao.excluir(lista.get(posicao));
+                if (deucerto == true) {
+                    Limpar();
+                    posicao = 0;
+                    lista = dao.listar();
+                    JOptionPane.showMessageDialog(null, "Excluído!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         }
     }//GEN-LAST:event_botaoexluirActionPerformed
 
     private void botaoconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconsultarActionPerformed
-        String nome = JOptionPane.showInputDialog("Digite o nome a ser pesquisado: ");
+        Integer codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código a ser pesquisado: "));
         boolean encontrou = false;
         Integer posicaoachou = 0;
         for (Pessoa pessoa : lista) {
-
-            if (nome.equals(pessoa.getNome())) {
+            if (codigo == (pessoa.getCodigo())) {
                 encontrou = true;
                 posicao = posicaoachou;
                 txtCodigo.setText(pessoa.getCodigo().toString());
@@ -430,7 +458,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxSexoActionPerformed
 
     private void listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagemActionPerformed
-        pessoaListar lista = new pessoaListar();
+        PessoaListar lista = new PessoaListar();
         lista.setVisible(true);
         dispose();
     }//GEN-LAST:event_listagemActionPerformed

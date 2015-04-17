@@ -5,7 +5,7 @@
  */
 package admin;
 
-import java.util.ArrayList;
+import dao.JogadorDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Jogador;
@@ -17,9 +17,10 @@ public class jogadorListar extends javax.swing.JFrame {
      */
     public jogadorListar() {
         initComponents();
-        List<Jogador> lista = new ArrayList<Jogador>();
-
-        Jogador jog = new Jogador();
+        JogadorDAO dao = new JogadorDAO();
+        List<Jogador> lista = dao.listar();
+        
+        /*Jogador jog = new Jogador();
         jog.setLogin("Ruan");
         jog.setEmail("ruanbage@hotmail.com");
         lista.add(jog);
@@ -32,7 +33,7 @@ public class jogadorListar extends javax.swing.JFrame {
         jog = new Jogador();
         jog.setLogin("Paulo");
         jog.setEmail("paulo@hotmail.com");
-        lista.add(jog);
+        lista.add(jog); */
 
         DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
         
